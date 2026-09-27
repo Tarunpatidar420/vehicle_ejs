@@ -1,0 +1,317 @@
+<%- include('../partials/head', { title: title || 'Owner Dashboard' }) %>
+
+<%- include('nav') %>
+
+<div class="flex">
+
+    <%- include('sidebar') %>
+
+    <main class="owner-content flex-1 p-4 md:p-8 bg-slate-50 min-h-screen">
+
+        <!-- =========================
+             DASHBOARD HEADER
+        ========================== -->
+
+        <div>
+
+            <h1 class="text-2xl font-bold text-gray-800">
+                Dashboard
+            </h1>
+
+            <p class="text-gray-500 mt-1">
+                Vehicle, booking and revenue overview
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             VEHICLE COUNTS
+        ========================== -->
+
+        <h2 class="text-lg font-bold text-gray-800 mt-8">
+            Available Vehicles
+        </h2>
+
+        <div
+            id="dashboardVehicleStats"
+            class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mt-4"
+        >
+
+            <div class="bg-white rounded-xl shadow p-5">
+                <p class="text-gray-500 text-sm">
+                    All Vehicles
+                </p>
+
+                <p
+                    id="availableVehicleCount"
+                    class="text-3xl font-bold mt-2"
+                >
+                    0
+                </p>
+            </div>
+
+
+            <div class="bg-white rounded-xl shadow p-5">
+                <p class="text-gray-500 text-sm">
+                    Bikes
+                </p>
+
+                <p
+                    id="bikeVehicleCount"
+                    class="text-3xl font-bold mt-2"
+                >
+                    0
+                </p>
+            </div>
+
+
+            <div class="bg-white rounded-xl shadow p-5">
+                <p class="text-gray-500 text-sm">
+                    Cars
+                </p>
+
+                <p
+                    id="carVehicleCount"
+                    class="text-3xl font-bold mt-2"
+                >
+                    0
+                </p>
+            </div>
+
+
+            <div class="bg-white rounded-xl shadow p-5">
+                <p class="text-gray-500 text-sm">
+                    Tractors
+                </p>
+
+                <p
+                    id="tractorVehicleCount"
+                    class="text-3xl font-bold mt-2"
+                >
+                    0
+                </p>
+            </div>
+
+
+            <div class="bg-white rounded-xl shadow p-5">
+                <p class="text-gray-500 text-sm">
+                    Agriculture Machinery
+                </p>
+
+                <p
+                    id="agricultureVehicleCount"
+                    class="text-3xl font-bold mt-2"
+                >
+                    0
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             BOOKING COUNTS
+        ========================== -->
+
+        <h2 class="text-lg font-bold text-gray-800 mt-8">
+            Booking Overview
+        </h2>
+
+        <div
+            class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mt-4"
+        >
+
+            <div class="bg-white rounded-xl shadow p-5">
+
+                <p class="text-gray-500 text-sm">
+                    Total Bookings
+                </p>
+
+                <p
+                    id="dashboardTotalBookings"
+                    class="text-3xl font-bold mt-2"
+                >
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="bg-yellow-50 rounded-xl shadow p-5">
+
+                <p class="text-yellow-700 text-sm">
+                    Pending
+                </p>
+
+                <p
+                    id="dashboardPendingBookings"
+                    class="text-3xl font-bold text-yellow-700 mt-2"
+                >
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="bg-green-50 rounded-xl shadow p-5">
+
+                <p class="text-green-700 text-sm">
+                    Confirmed
+                </p>
+
+                <p
+                    id="dashboardConfirmedBookings"
+                    class="text-3xl font-bold text-green-700 mt-2"
+                >
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="bg-red-50 rounded-xl shadow p-5">
+
+                <p class="text-red-700 text-sm">
+                    Cancelled
+                </p>
+
+                <p
+                    id="dashboardCancelledBookings"
+                    class="text-3xl font-bold text-red-700 mt-2"
+                >
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="bg-blue-50 rounded-xl shadow p-5">
+
+                <p class="text-blue-700 text-sm">
+                    Booked Vehicles
+                </p>
+
+                <p
+                    id="dashboardBookedVehicles"
+                    class="text-3xl font-bold text-blue-700 mt-2"
+                >
+                    0
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             BOOKING VEHICLE CATEGORY
+        ========================== -->
+
+      
+
+        <!-- =========================
+             REVENUE
+        ========================== -->
+
+        <h2 class="text-lg font-bold text-gray-800 mt-8">
+            Revenue Overview
+        </h2>
+
+        <div
+            class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mt-4"
+        >
+
+            <div class="bg-white rounded-xl shadow p-5">
+
+                <p class="text-gray-500 text-sm">
+                    Bike Revenue
+                </p>
+
+                <p
+                    id="bikeRevenue"
+                    class="text-2xl font-bold mt-2"
+                >
+                    ₹0
+                </p>
+
+            </div>
+
+
+            <div class="bg-white rounded-xl shadow p-5">
+
+                <p class="text-gray-500 text-sm">
+                    Car Revenue
+                </p>
+
+                <p
+                    id="carRevenue"
+                    class="text-2xl font-bold mt-2"
+                >
+                    ₹0
+                </p>
+
+            </div>
+
+
+            <div class="bg-white rounded-xl shadow p-5">
+
+                <p class="text-gray-500 text-sm">
+                    Tractor Revenue
+                </p>
+
+                <p
+                    id="tractorRevenue"
+                    class="text-2xl font-bold mt-2"
+                >
+                    ₹0
+                </p>
+
+            </div>
+
+
+            <div class="bg-white rounded-xl shadow p-5">
+
+                <p class="text-gray-500 text-sm">
+                    Agriculture Revenue
+                </p>
+
+                <p
+                    id="agricultureRevenue"
+                    class="text-2xl font-bold mt-2"
+                >
+                    ₹0
+                </p>
+
+            </div>
+
+
+            <div class="bg-blue-600 text-white rounded-xl shadow p-5">
+
+                <p class="text-blue-100 text-sm">
+                    Total Revenue
+                </p>
+
+                <p
+                    id="totalRevenue"
+                    class="text-2xl font-bold mt-2"
+                >
+                    ₹0
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             RECENT BOOKINGS
+        ========================== -->
+
+       
+
+
+<script src="/js/owner.js"></script>
+
+</body>
+</html>

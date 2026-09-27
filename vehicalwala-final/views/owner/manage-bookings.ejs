@@ -1,0 +1,931 @@
+<%- include('../partials/head', { title: title || 'Manage Bookings' }) %>
+
+<%- include('nav') %>
+
+<div class="w-full min-h-screen bg-slate-50 overflow-x-hidden">
+
+    <%- include('sidebar') %>
+
+    <main
+        class="
+            owner-content
+            w-full
+            min-w-0
+            p-4
+            md:p-8
+            bg-slate-50
+        "
+    >
+
+        <!-- =====================================================
+             HEADER
+        ====================================================== -->
+
+        <div class="w-full min-w-0">
+
+            <h1
+                class="
+                    text-2xl
+                    font-bold
+                    text-gray-800
+                "
+            >
+                Manage Bookings
+            </h1>
+
+            <p
+                class="
+                    text-gray-500
+                    mt-1
+                    text-sm
+                "
+            >
+                Manage bookings, customer information and booking status
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+             STATS
+        ====================================================== -->
+
+        <div
+            class="
+                grid
+                grid-cols-2
+                md:grid-cols-4
+                gap-3
+                md:gap-4
+                mt-6
+                w-full
+            "
+        >
+
+            <!-- TOTAL -->
+
+            <div
+                class="
+                    bg-white
+                    rounded-xl
+                    shadow-sm
+                    border
+                    border-slate-100
+                    p-4
+                    min-w-0
+                "
+            >
+
+                <p
+                    class="
+                        text-sm
+                        text-gray-500
+                    "
+                >
+                    Total
+                </p>
+
+                <p
+                    id="totalBookings"
+                    class="
+                        text-2xl
+                        font-bold
+                        mt-1
+                    "
+                >
+                    0
+                </p>
+
+            </div>
+
+
+            <!-- PENDING -->
+
+            <div
+                class="
+                    bg-yellow-50
+                    rounded-xl
+                    shadow-sm
+                    border
+                    border-yellow-100
+                    p-4
+                    min-w-0
+                "
+            >
+
+                <p
+                    class="
+                        text-sm
+                        text-yellow-700
+                    "
+                >
+                    Pending
+                </p>
+
+                <p
+                    id="pendingBookings"
+                    class="
+                        text-2xl
+                        font-bold
+                        text-yellow-700
+                        mt-1
+                    "
+                >
+                    0
+                </p>
+
+            </div>
+
+
+            <!-- CONFIRMED -->
+
+            <div
+                class="
+                    bg-green-50
+                    rounded-xl
+                    shadow-sm
+                    border
+                    border-green-100
+                    p-4
+                    min-w-0
+                "
+            >
+
+                <p
+                    class="
+                        text-sm
+                        text-green-700
+                    "
+                >
+                    Confirmed
+                </p>
+
+                <p
+                    id="confirmedBookings"
+                    class="
+                        text-2xl
+                        font-bold
+                        text-green-700
+                        mt-1
+                    "
+                >
+                    0
+                </p>
+
+            </div>
+
+
+            <!-- CANCELLED -->
+
+            <div
+                class="
+                    bg-red-50
+                    rounded-xl
+                    shadow-sm
+                    border
+                    border-red-100
+                    p-4
+                    min-w-0
+                "
+            >
+
+                <p
+                    class="
+                        text-sm
+                        text-red-700
+                    "
+                >
+                    Cancelled
+                </p>
+
+                <p
+                    id="cancelledBookings"
+                    class="
+                        text-2xl
+                        font-bold
+                        text-red-700
+                        mt-1
+                    "
+                >
+                    0
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             DESKTOP BOOKINGS TABLE
+        ====================================================== -->
+
+        <div
+            class="
+                hidden
+                md:block
+                bg-white
+                rounded-xl
+                shadow-sm
+                border
+                border-slate-100
+                mt-6
+                w-full
+                min-w-0
+                overflow-hidden
+            "
+        >
+
+            <table
+                class="
+                    w-full
+                    text-sm
+                    table-fixed
+                "
+            >
+
+                <thead
+                    class="
+                        bg-slate-100
+                        text-gray-700
+                    "
+                >
+
+                    <tr>
+
+                        <th
+                            class="
+                                p-3
+                                text-left
+                                w-[22%]
+                            "
+                        >
+                            Vehicle
+                        </th>
+
+
+                        <th
+                            class="
+                                p-3
+                                text-left
+                                w-[20%]
+                            "
+                        >
+                            Customer
+                        </th>
+
+
+                        <th
+                            class="
+                                p-3
+                                text-left
+                                w-[17%]
+                            "
+                        >
+                            Dates
+                        </th>
+
+
+                        <th
+                            class="
+                                p-3
+                                text-left
+                                w-[12%]
+                            "
+                        >
+                            Price
+                        </th>
+
+
+                        <th
+                            class="
+                                p-3
+                                text-left
+                                w-[11%]
+                            "
+                        >
+                            Status
+                        </th>
+
+
+                        <th
+                            class="
+                                p-3
+                                text-left
+                                w-[18%]
+                            "
+                        >
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody
+                    id="ownerBookings"
+                >
+
+                    <tr>
+
+                        <td
+                            colspan="6"
+                            class="
+                                p-10
+                                text-center
+                                text-gray-500
+                            "
+                        >
+                            Loading bookings...
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- =====================================================
+             MOBILE BOOKINGS
+        ====================================================== -->
+
+        <div
+            id="mobileOwnerBookings"
+            class="
+                md:hidden
+                mt-5
+                w-full
+                min-w-0
+                space-y-3
+            "
+        >
+
+            <div
+                class="
+                    bg-white
+                    rounded-xl
+                    shadow-sm
+                    p-6
+                    text-center
+                    text-gray-500
+                "
+            >
+                Loading bookings...
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================================
+     BOOKING DETAILS MODAL
+========================================================= -->
+
+<div
+    id="bookingViewModal"
+    class="
+        hidden
+        fixed
+        inset-0
+        z-[100]
+        bg-black/60
+        items-center
+        justify-center
+        p-3
+        md:p-4
+    "
+>
+
+    <div
+        class="
+            bg-white
+            rounded-2xl
+            shadow-xl
+            w-full
+            max-w-3xl
+            max-h-[90vh]
+            overflow-y-auto
+        "
+    >
+
+        <!-- MODAL HEADER -->
+
+        <div
+            class="
+                sticky
+                top-0
+                bg-white
+                border-b
+                px-4
+                md:px-6
+                py-4
+                flex
+                items-center
+                justify-between
+                gap-3
+            "
+        >
+
+            <div class="min-w-0">
+
+                <h2
+                    class="
+                        text-xl
+                        font-bold
+                        text-gray-800
+                    "
+                >
+                    Booking Details
+                </h2>
+
+                <p
+                    class="
+                        text-sm
+                        text-gray-500
+                        mt-1
+                    "
+                >
+                    Customer information submitted during booking
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="closeBookingView"
+                class="
+                    text-gray-500
+                    hover:text-black
+                    text-2xl
+                    flex-shrink-0
+                    w-9
+                    h-9
+                    flex
+                    items-center
+                    justify-center
+                    rounded-lg
+                    hover:bg-gray-100
+                "
+            >
+                &times;
+            </button>
+
+        </div>
+
+
+        <!-- MODAL CONTENT -->
+
+        <div
+            id="bookingViewContent"
+            class="
+                p-4
+                md:p-6
+            "
+        >
+
+            <div
+                class="
+                    text-center
+                    text-gray-500
+                "
+            >
+                Loading...
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     OWNER JS
+========================================================= -->
+
+<script src="/js/owner.js?v=21"></script>
+
+
+<!-- =========================================================
+     
+========================================================= -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const desktopTable =
+            document.getElementById(
+                "ownerBookings"
+            );
+
+        const mobileContainer =
+            document.getElementById(
+                "mobileOwnerBookings"
+            );
+
+
+        if (
+            !desktopTable ||
+            !mobileContainer
+        ) {
+            return;
+        }
+
+
+        function renderMobileBookings() {
+
+            const rows =
+                Array.from(
+                    desktopTable.querySelectorAll(
+                        "tr"
+                    )
+                );
+
+
+            if (
+                rows.length === 0
+            ) {
+
+                mobileContainer.innerHTML = `
+
+                    <div
+                        class="
+                            bg-white
+                            rounded-xl
+                            shadow-sm
+                            p-6
+                            text-center
+                            text-gray-500
+                        "
+                    >
+                        No bookings found.
+                    </div>
+
+                `;
+
+                return;
+            }
+
+
+            /*
+             * Loading / empty row
+             */
+
+            const firstRow =
+                rows[0];
+
+
+            if (
+                firstRow.querySelector(
+                    "td[colspan]"
+                )
+            ) {
+
+                const text =
+                    firstRow.textContent
+                        .trim()
+                        .toLowerCase();
+
+
+                if (
+                    text.includes("loading")
+                ) {
+
+                    mobileContainer.innerHTML = `
+
+                        <div
+                            class="
+                                bg-white
+                                rounded-xl
+                                shadow-sm
+                                p-6
+                                text-center
+                                text-gray-500
+                            "
+                        >
+                            Loading bookings...
+                        </div>
+
+                    `;
+
+                } else {
+
+                    mobileContainer.innerHTML = `
+
+                        <div
+                            class="
+                                bg-white
+                                rounded-xl
+                                shadow-sm
+                                p-6
+                                text-center
+                                text-gray-500
+                            "
+                        >
+                            No bookings found.
+                        </div>
+
+                    `;
+
+                }
+
+                return;
+            }
+
+
+            /*
+             * Convert table rows into cards
+             */
+
+            const cards =
+                rows
+                    .map(
+                        function (row) {
+
+                            const cells =
+                                row.querySelectorAll(
+                                    "td"
+                                );
+
+
+                            if (
+                                cells.length < 6
+                            ) {
+                                return "";
+                            }
+
+
+                            const vehicle =
+                                cells[0].innerHTML;
+
+
+                            const customer =
+                                cells[1].innerHTML;
+
+
+                            const dates =
+                                cells[2].innerHTML;
+
+
+                            const price =
+                                cells[3].innerHTML;
+
+
+                            const status =
+                                cells[4].innerHTML;
+
+
+                            const actions =
+                                cells[5].innerHTML;
+
+
+                            return `
+
+                                <div
+                                    class="
+                                        bg-white
+                                        rounded-xl
+                                        shadow-sm
+                                        border
+                                        border-slate-100
+                                        p-4
+                                        w-full
+                                        min-w-0
+                                    "
+                                >
+
+                                    <!-- VEHICLE -->
+
+                                    <div
+                                        class="
+                                            pb-3
+                                            border-b
+                                            border-slate-100
+                                        "
+                                    >
+
+                                        <p
+                                            class="
+                                                text-xs
+                                                text-gray-400
+                                                mb-2
+                                            "
+                                        >
+                                            Vehicle
+                                        </p>
+
+                                        <div
+                                            class="
+                                                min-w-0
+                                                break-words
+                                            "
+                                        >
+                                            ${vehicle}
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- CUSTOMER -->
+
+                                    <div
+                                        class="
+                                            py-3
+                                            border-b
+                                            border-slate-100
+                                        "
+                                    >
+
+                                        <p
+                                            class="
+                                                text-xs
+                                                text-gray-400
+                                                mb-1
+                                            "
+                                        >
+                                            Customer
+                                        </p>
+
+                                        <div
+                                            class="
+                                                min-w-0
+                                                break-words
+                                            "
+                                        >
+                                            ${customer}
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- DATES -->
+
+                                    <div
+                                        class="
+                                            py-3
+                                            border-b
+                                            border-slate-100
+                                        "
+                                    >
+
+                                        <p
+                                            class="
+                                                text-xs
+                                                text-gray-400
+                                                mb-1
+                                            "
+                                        >
+                                            Booking Dates
+                                        </p>
+
+                                        <div>
+                                            ${dates}
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- PRICE -->
+
+                                    <div
+                                        class="
+                                            py-3
+                                            border-b
+                                            border-slate-100
+                                        "
+                                    >
+
+                                        <p
+                                            class="
+                                                text-xs
+                                                text-gray-400
+                                                mb-1
+                                            "
+                                        >
+                                            Price
+                                        </p>
+
+                                        <div
+                                            class="font-semibold"
+                                        >
+                                            ${price}
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- STATUS -->
+
+                                    <div
+                                        class="
+                                            py-3
+                                            border-b
+                                            border-slate-100
+                                        "
+                                    >
+
+                                        <p
+                                            class="
+                                                text-xs
+                                                text-gray-400
+                                                mb-1
+                                            "
+                                        >
+                                            Status
+                                        </p>
+
+                                        <div>
+                                            ${status}
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- ACTIONS -->
+
+                                    <div
+                                        class="pt-3"
+                                    >
+
+                                        <p
+                                            class="
+                                                text-xs
+                                                text-gray-400
+                                                mb-2
+                                            "
+                                        >
+                                            Actions
+                                        </p>
+
+                                        <div
+                                            class="
+                                                flex
+                                                flex-wrap
+                                                gap-2
+                                                max-w-full
+                                            "
+                                        >
+                                            ${actions}
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            `;
+
+                        }
+                    )
+                    .join("");
+
+
+            mobileContainer.innerHTML =
+                cards;
+
+        }
+
+
+        /*
+         * owner.js booking data load hone ke baad
+         * tbody change karega.
+         */
+
+        const observer =
+            new MutationObserver(
+                function () {
+
+                    renderMobileBookings();
+
+                }
+            );
+
+
+        observer.observe(
+            desktopTable,
+            {
+                childList: true,
+                subtree: true
+            }
+        );
+
+
+        renderMobileBookings();
+
+    }
+);
+
+</script>
+
+
+</body>
+</html>

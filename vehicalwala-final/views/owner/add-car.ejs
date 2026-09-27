@@ -1,0 +1,392 @@
+<%- include('../partials/head',{title:title}) %>
+<%- include('nav') %>
+
+<div class="flex">
+
+    <%- include('sidebar') %>
+
+    <main class="owner-content flex-1 p-8 bg-slate-50 min-h-screen">
+
+        <h1 class="text-2xl font-bold">
+            Add Vehicle
+        </h1>
+
+
+        <form
+            id="addCarForm"
+            class="card p-6 mt-6 grid md:grid-cols-2 gap-4"
+        >
+
+            <!-- =========================
+                 BRAND
+            ========================== -->
+
+            <input
+                name="brand"
+                required
+                class="border p-3 rounded"
+                placeholder="Brand (e.g. Mahindra, Toyota)"
+            >
+
+
+            <!-- =========================
+                 MODEL
+            ========================== -->
+
+            <input
+                name="model"
+                required
+                class="border p-3 rounded"
+                placeholder="Model"
+            >
+
+
+            <!-- =========================
+                 YEAR
+            ========================== -->
+
+            <input
+                name="year"
+                type="number"
+                required
+                min="1900"
+                max="2100"
+                class="border p-3 rounded"
+                placeholder="Year"
+            >
+
+
+            <!-- =========================
+                 CATEGORY DROPDOWN
+            ========================== -->
+
+            <select
+                name="categories"
+                required
+                class="border p-3 rounded bg-white"
+            >
+
+                <option value="">
+                    Select Category
+                </option>
+
+                <option value="car">
+                    🚗 Car
+                </option>
+
+                <option value="bike">
+                    🏍️ Bike
+                </option>
+
+                <option value="tractor">
+                    🚜 Tractor
+                </option>
+
+                <option value="agriculture machinery">
+                    🌾 Agriculture Machinery
+                </option>
+
+            </select>
+
+
+            <!-- =========================
+                 SEATING CAPACITY
+            ========================== -->
+
+            <input
+                name="seating_capacity"
+                type="number"
+                required
+                min="1"
+                class="border p-3 rounded"
+                placeholder="Seating capacity"
+            >
+
+
+            <!-- =========================
+                 FUEL TYPE DROPDOWN
+            ========================== -->
+
+            <select
+                name="fuel_type"
+                required
+                class="border p-3 rounded bg-white"
+            >
+
+                <option value="">
+                    Select Fuel Type
+                </option>
+
+                <option value="Petrol">
+                    Petrol
+                </option>
+
+                <option value="Diesel">
+                    Diesel
+                </option>
+
+                <option value="Electric">
+                    Electric
+                </option>
+
+                <option value="CNG">
+                    CNG
+                </option>
+
+                <option value="Hybrid">
+                    Hybrid
+                </option>
+
+            </select>
+
+
+            <!-- =========================
+                 TRANSMISSION DROPDOWN
+            ========================== -->
+
+            <select
+                name="transmission"
+                required
+                class="border p-3 rounded bg-white"
+            >
+
+                <option value="">
+                    Select Transmission
+                </option>
+
+                <option value="Manual">
+                    Manual
+                </option>
+
+                <option value="Automatic">
+                    Automatic
+                </option>
+
+                <option value="AMT">
+                    AMT
+                </option>
+
+                <option value="CVT">
+                    CVT
+                </option>
+
+                <option value="DCT">
+                    DCT
+                </option>
+
+                <option value="N/A">
+                    N/A
+                </option>
+
+            </select>
+
+
+            <!-- =========================
+                 PRICE
+            ========================== -->
+
+            <input
+                name="pricePerDay"
+                type="number"
+                required
+                min="0"
+                class="border p-3 rounded"
+                placeholder="Price per day"
+            >
+
+
+            <!-- =========================
+                 DISCOUNT
+            ========================== -->
+
+            <input
+                name="discount"
+                type="number"
+                min="0"
+                max="100"
+                value="0"
+                class="border p-3 rounded"
+                placeholder="Discount %"
+            >
+
+
+            <!-- =========================
+                 AVAILABLE COUNT
+            ========================== -->
+
+            <input
+                name="availableCount"
+                type="number"
+                min="1"
+                value="1"
+                class="border p-3 rounded"
+                placeholder="Available count"
+            >
+
+
+            <!-- =========================
+                 CONTACT EMAIL
+            ========================== -->
+
+            <input
+                name="email"
+                type="email"
+                class="border p-3 rounded"
+                placeholder="Contact Email"
+            >
+
+
+            <!-- =========================
+                 WHATSAPP
+            ========================== -->
+
+            <input
+                name="whatsapp"
+                class="border p-3 rounded"
+                placeholder="Whatsapp"
+            >
+
+
+            <!-- =========================
+                 ADDRESS LINE 1
+            ========================== -->
+
+            <input
+                name="line1"
+                class="border p-3 rounded"
+                placeholder="Address line 1"
+            >
+
+
+            <!-- =========================
+                 ADDRESS LINE 2
+            ========================== -->
+
+            <input
+                name="line2"
+                class="border p-3 rounded"
+                placeholder="Address line 2"
+            >
+
+
+            <!-- =========================
+                 CITY
+            ========================== -->
+
+            <input
+                name="city"
+                class="border p-3 rounded"
+                placeholder="City"
+            >
+
+
+            <!-- =========================
+                 STATE
+            ========================== -->
+
+            <input
+                name="state"
+                class="border p-3 rounded"
+                placeholder="State"
+            >
+
+
+            <!-- =========================
+                 PINCODE
+            ========================== -->
+
+            <input
+                name="pincode"
+                class="border p-3 rounded"
+                placeholder="Pincode"
+            >
+
+
+            <!-- =========================
+                 DESCRIPTION
+            ========================== -->
+
+            <textarea
+                name="description"
+                class="border p-3 rounded md:col-span-2"
+                rows="4"
+                placeholder="Description"
+            ></textarea>
+
+
+            <!-- =========================
+                 IMAGES
+            ========================== -->
+
+            <div class="md:col-span-2">
+
+                <label
+                    class="
+                        block
+                        font-medium
+                        text-gray-700
+                        mb-2
+                    "
+                >
+                    Vehicle Images
+                </label>
+
+                <input
+                    name="images"
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    required
+                    class="
+                        border
+                        p-3
+                        rounded
+                        w-full
+                        bg-white
+                    "
+                >
+
+                <p
+                    class="
+                        text-xs
+                        text-gray-500
+                        mt-1
+                    "
+                >
+                    You can select multiple vehicle images.
+                </p>
+
+            </div>
+
+
+            <!-- =========================
+                 SUBMIT
+            ========================== -->
+
+            <button
+                type="submit"
+                class="
+                    bg-blue-600
+                    hover:bg-blue-700
+                    text-white
+                    p-3
+                    rounded
+                    md:col-span-2
+                    font-semibold
+                    transition
+                "
+            >
+                Add Vehicle
+            </button>
+
+        </form>
+
+    </main>
+
+</div>
+
+
+<script src="/js/owner.js?v=11"></script>
+
+</body>
+</html>

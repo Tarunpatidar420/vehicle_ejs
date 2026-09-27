@@ -1,0 +1,231 @@
+<%- include('partials/head', { title: title || 'Available Vehicles' }) %>
+
+<%- include('partials/navbar') %>
+
+
+<!-- =====================================================
+     CATEGORY SECTION
+===================================================== -->
+
+<section class="py-16 bg-slate-100">
+
+    <div class="container mx-auto px-4 text-center">
+
+        <h1 class="text-3xl md:text-4xl font-bold text-slate-800">
+            Available Vehicles
+        </h1>
+
+        <p class="text-gray-500 mt-2">
+            Browse our selection of premium vehicles
+        </p>
+
+
+        <!-- =================================================
+             CATEGORY BUTTONS
+        ================================================== -->
+
+        <div
+            class="
+                grid
+                grid-cols-2
+                sm:grid-cols-5
+                gap-3
+                mt-7
+            "
+        >
+
+            <% [
+                ['All', 'agriculture-machinary.png'],
+                ['Car', 'car_image5.png'],
+                ['Tractor', 'farmtack.png'],
+                ['Bike', 'ktm.png'],
+                ['Agriculture', 'miniharvester.png']
+            ].forEach(function(c) { %>
+
+
+                <button
+                    type="button"
+                    class="
+                        category-btn
+                        bg-white
+                        rounded-xl
+                        p-2
+                        shadow
+                        hover:shadow-lg
+                        transition
+                        duration-200
+                    "
+                    data-category="<%= c[0] %>"
+                >
+
+                    <img
+                        src="/assets/<%= c[1] %>"
+                        alt="<%= c[0] %>"
+                        class="
+                            h-20
+                            w-full
+                            object-contain
+                        "
+                    >
+
+                    <span
+                        class="
+                            block
+                            mt-2
+                            font-medium
+                            text-slate-700
+                        "
+                    >
+                        <%= c[0] %>
+                    </span>
+
+                </button>
+
+
+            <% }) %>
+
+        </div>
+
+
+        <!-- =================================================
+             SEARCH
+        ================================================== -->
+
+        <div
+            class="
+                mt-6
+                max-w-lg
+                mx-auto
+                bg-white
+                px-4
+                h-12
+                rounded-full
+                shadow
+                flex
+                items-center
+            "
+        >
+
+            <img
+                src="/assets/search_icon.svg"
+                alt="Search"
+                class="w-5 mr-2"
+            >
+
+            <input
+                id="carSearch"
+                type="text"
+                placeholder="Search vehicles..."
+                autocomplete="off"
+                class="
+                    w-full
+                    outline-none
+                    text-gray-700
+                "
+            >
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     VEHICLE LIST
+===================================================== -->
+
+<section class="container mx-auto px-4 py-10">
+
+    <!-- RESULT COUNT -->
+
+    <div
+        class="
+            flex
+            items-center
+            justify-between
+            mb-5
+        "
+    >
+
+        <p class="text-gray-600">
+
+            Showing
+
+            <b
+                id="carCount"
+                class="text-slate-800"
+            >
+                0
+            </b>
+
+            vehicles
+
+        </p>
+
+    </div>
+
+
+    <!-- =================================================
+         VEHICLE GRID
+    ================================================== -->
+
+    <div
+        id="carGrid"
+        class="
+            grid
+            grid-cols-1
+            sm:grid-cols-2
+            md:grid-cols-3
+            lg:grid-cols-3
+            gap-6
+        "
+    >
+
+        <!-- Vehicles will be loaded by app.js -->
+
+        <div
+            class="
+                col-span-full
+                text-center
+                py-12
+                text-gray-500
+            "
+        >
+            Loading vehicles...
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<%- include('partials/footer') %>
+
+
+<!-- =====================================================
+     PAGE DATA
+===================================================== -->
+
+<script>
+    window.CARS_PAGE = {
+        pickupLocation: null,
+        pickupDate: null,
+        returnDate: null,
+        category: "All"
+    };
+</script>
+
+
+<!-- =====================================================
+     APP JS
+===================================================== -->
+
+<script src="/js/app.js?v=11"></script>
+
+</body>
+</html>

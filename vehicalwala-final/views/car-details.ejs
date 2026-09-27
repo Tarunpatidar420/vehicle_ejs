@@ -1,0 +1,131 @@
+<%- include('partials/head',{title:title}) %>
+<%- include('partials/navbar') %>
+
+<main class="container py-10">
+
+    <div
+        id="detailsLoading"
+        class="text-center py-20"
+    >
+        ⏳ Loading vehicle details...
+    </div>
+
+    <div id="details"></div>
+
+</main>
+
+
+<div
+    id="bookingModal"
+    class="hidden fixed inset-0 bg-black/50 z-50 items-center justify-center p-4"
+>
+
+    <form
+        id="bookingForm"
+        class="bg-white rounded-xl p-6 w-full max-w-lg max-h-[90vh] overflow-auto"
+    >
+
+        <div class="flex justify-between">
+
+            <h2 class="text-xl font-bold">
+                Confirm Booking
+            </h2>
+
+            <button
+                type="button"
+                id="closeBooking"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <div class="grid gap-3 mt-4">
+
+            <input
+                name="name"
+                required
+                class="border p-2 rounded"
+                placeholder="Full Name"
+            >
+
+            <input
+                name="email"
+                type="email"
+                required
+                class="border p-2 rounded"
+                placeholder="Email"
+            >
+
+            <input
+                name="whatsapp"
+                required
+                class="border p-2 rounded"
+                placeholder="Whatsapp Number"
+            >
+
+            <textarea
+                name="address"
+                required
+                class="border p-2 rounded"
+                placeholder="Address"
+            ></textarea>
+
+            <input
+                name="pincode"
+                required
+                class="border p-2 rounded"
+                placeholder="Pincode"
+            >
+
+            <input
+                name="vehicleUse"
+                required
+                class="border p-2 rounded"
+                placeholder="Purpose of booking"
+            >
+
+            <select
+                name="paymentMethod"
+                class="border p-2 rounded"
+            >
+
+                <option value="offline">
+                    Offline
+                </option>
+
+                <option value="googlepay">
+                    Google Pay
+                </option>
+
+                <option value="paytm">
+                    Paytm
+                </option>
+
+                <option value="card">
+                    Debit / Credit Card
+                </option>
+
+            </select>
+
+
+            <button
+                class="bg-green-600 text-white p-3 rounded"
+            >
+                Confirm Booking
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+<%- include('partials/footer') %>
+
+<script>
+    window.CAR_ID =
+        <%- JSON.stringify(id) %>;
+</script>

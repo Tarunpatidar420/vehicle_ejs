@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+
+* {
+    font-family: Outfit, sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    color: #334155;
+    background: #fff;
+}
+
+.primary {
+    color: #2563eb;
+}
+
+.bg-primary {
+    background: #2563eb;
+}
+
+.borderColor {
+    border-color: #c4c7d2;
+}
+
+.container {
+    max-width: 1280px;
+    margin: auto;
+    padding: 0 24px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(15, 23, 42, .08);
+}
+
+button {
+    cursor: pointer;
+}
+
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+.mobile-menu {
+    display: none;
+}
+
+@media (max-width: 640px) {
+    .desktop-nav {
+        display: none !important;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .grid-responsive {
+        grid-template-columns: 1fr !important;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .owner-sidebar {
+        width: 64px !important;
+    }
+
+    .owner-sidebar span {
+        display: none;
+    }
+
+    .owner-content {
+        padding: 16px !important;
+    }
+}

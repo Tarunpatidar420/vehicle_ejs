@@ -1,0 +1,257 @@
+<%- include('partials/head',{title:'VehicalWala'}) %>
+<%- include('partials/navbar') %>
+
+<section class="bg-slate-100 py-16">
+    <div class="container grid md:grid-cols-2 gap-10 items-center">
+
+        <div>
+
+            <h1 class="text-4xl md:text-6xl font-bold leading-tight">
+                Find Your Perfect
+                <span class="text-blue-600">
+                    Vehicle
+                </span>
+            </h1>
+
+            <p class="mt-5 text-gray-600 text-lg">
+                Rent cars, bikes, tractors and agriculture machinery with flexible booking.
+            </p>
+
+</section>
+
+
+<section class="container py-12">
+
+    <h2 class="text-3xl font-bold text-center">
+        Vehicle Categories
+    </h2>
+
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-8">
+
+        <% [
+            ['Car','car_image5.png','🚗'],
+            ['Tractor','farmtack.png','🚜'],
+            ['Bike','ktm.png','🏍️'],
+            ['Agriculture','miniharvester.png','🌾'],
+            ['All','agriculture-machinary.png','✨']
+        ].forEach(c=>{ %>
+
+            <a
+                href="/cars?category=<%= c[0] %>"
+                class="card p-4 text-center hover:-translate-y-1 transition"
+            >
+
+                <img
+                    src="/assets/<%= c[1] %>"
+                    class="h-28 w-full object-contain"
+                >
+
+                <b>
+                    <%= c[2] %>
+                    <%= c[0] %>
+                </b>
+
+            </a>
+
+        <% }) %>
+
+    </div>
+
+</section>
+
+
+<section class="container py-10">
+
+    <div class="flex justify-between items-center">
+
+        <h2 class="text-3xl font-bold">
+            Featured Vehicles
+        </h2>
+
+        <a
+            href="/cars"
+            class="text-blue-600"
+        >
+            View all →
+        </a>
+
+    </div>
+
+    <div
+        id="featuredGrid"
+        class="grid md:grid-cols-3 gap-6 mt-6"
+    >
+
+        <div>
+            Loading vehicles...
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="px-4 md:px-16 py-10 bg-gradient-to-b from-blue-50 to-white">
+
+    <h2 class="text-3xl font-bold text-center mb-8">
+        Agriculture Machinery
+    </h2>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
+
+        <% [
+            [
+                'Harvester',
+                'harvester.png',
+                'Powerful harvester for high-yield harvesting.'
+            ],
+            [
+                'Seed Drill',
+                'seedreel.png',
+                'Modern seed drills for perfect planting.'
+            ],
+            [
+                'Cultivator',
+                'cultivator.png',
+                'Durable cultivators for soil tilling.'
+            ],
+            [
+                'Spray Pump',
+                'spraypump.png',
+                'Portable pumps for efficient field irrigation.'
+            ],
+            [
+                'Rotorvator',
+                'rotorvator.png',
+                'Ideal for deep soil preparation and ploughing.'
+            ],
+            [
+                'Puni Machine',
+                'puni-machine.png',
+                'Efficient machine for leveling and soil preparation.'
+            ],
+            [
+                'Mini Harvester',
+                'miniharvester.png',
+                'Compact harvester for small-scale farming.'
+            ]
+        ].forEach(v=>{ %>
+
+            <div
+                class="
+                    bg-white
+                    shadow-md
+                    rounded-xl
+                    overflow-hidden
+                    hover:shadow-lg
+                    transition
+                "
+            >
+
+                <img
+                    src="/assets/<%= v[1] %>"
+                    class="
+                        w-full
+                        h-36
+                        object-contain
+                        bg-gray-50
+                    "
+                >
+
+                <div class="p-3 text-center">
+
+                    <h3 class="font-semibold">
+                        <%= v[0] %>
+                    </h3>
+
+                    <p class="text-xs text-gray-500 mt-1">
+                        <%= v[2] %>
+                    </p>
+
+                    <a
+                        href="/cars?category=Agriculture"
+                        class="
+                            inline-block
+                            mt-3
+                            px-3
+                            py-1.5
+                            bg-blue-600
+                            text-white
+                            rounded-md
+                            text-xs
+                        "
+                    >
+                        Explore
+                    </a>
+
+                </div>
+
+            </div>
+
+        <% }) %>
+
+    </div>
+
+</section>
+
+
+<section class="container py-12">
+
+    <div class="card p-8">
+
+        <h2 class="text-2xl font-bold">
+            Contact Us
+        </h2>
+
+        <p class="text-gray-500 mt-2">
+            Have a question? Send us a message.
+        </p>
+
+        <form
+            id="contactForm"
+            class="grid md:grid-cols-2 gap-4 mt-5"
+        >
+
+            <input
+                name="name"
+                required
+                class="border p-3 rounded"
+                placeholder="Name"
+            >
+
+            <input
+                name="email"
+                type="email"
+                required
+                class="border p-3 rounded"
+                placeholder="Email"
+            >
+
+            <textarea
+                name="message"
+                required
+                class="border p-3 rounded md:col-span-2"
+                rows="4"
+                placeholder="Message"
+            ></textarea>
+
+            <button
+                class="
+                    bg-blue-600
+                    text-white
+                    rounded
+                    p-3
+                    md:col-span-2
+                "
+            >
+                Send Message
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<%- include('partials/footer') %>

@@ -1,0 +1,989 @@
+
+
+<nav
+    class="flex items-center justify-between
+           px-4 md:px-8 py-3
+           bg-white
+           border-b border-slate-200
+           sticky top-0 z-50"
+>
+
+    <!-- LEFT SIDE -->
+    <div class="flex items-center gap-3">
+
+        <!--  -->
+        <button
+            type="button"
+            id="ownerMenuBtn"
+            class="w-10 h-10
+                   flex items-center justify-center
+                   rounded-lg
+                   hover:bg-slate-100
+                   text-gray-700
+                   transition"
+            aria-label="Open menu"
+        >
+            <span class="text-2xl leading-none">
+                ☰
+            </span>
+        </button>
+
+
+        <!-- LOGO -->
+        <a
+            href="/"
+            class="flex items-center"
+        >
+            <img
+                src="/assets/logo.svg"
+                class="h-7"
+                alt="VehicalWala"
+            >
+        </a>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    
+    <!-- ================================================= -->
+
+    <div
+        class="hidden md:flex
+               items-center
+               gap-6
+               ml-4"
+    >
+
+        <a
+            href="/"
+            class="text-gray-600
+                   hover:text-blue-600
+                   font-medium
+                   transition"
+        >
+            Home
+        </a>
+
+
+        <a
+            href="/my-bookings"
+            class="text-gray-600
+                   hover:text-blue-600
+                   font-medium
+                   transition"
+        >
+            My Bookings
+        </a>
+
+
+        <a
+            href="/owner/dashboard"
+            class="text-blue-600
+                   font-semibold
+                   transition"
+        >
+            Dashboard
+        </a>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- -->
+    <!-- ================================================= -->
+
+    <div
+        class="flex items-center gap-3 md:gap-5"
+    >
+
+        <!-- OWNER NAME -->
+
+        <span
+            class="hidden sm:block text-gray-500"
+        >
+            Welcome,
+
+            <b
+                id="ownerName"
+                class="text-gray-800"
+            >
+                Owner
+            </b>
+
+        </span>
+
+
+        <!-- LOGOUT -->
+
+        <button
+            id="ownerLogout"
+            type="button"
+            class="px-4 py-2
+                   bg-blue-600
+                   hover:bg-blue-700
+                   text-white
+                   rounded-lg
+                   transition
+                   text-sm
+                   font-medium"
+        >
+            Logout
+        </button>
+
+    </div>
+
+</nav>
+
+
+
+<!-- ================================================= -->
+<!-- MOBILE NAVIGATION -->
+<!-- ================================================= -->
+
+<div
+    class="md:hidden
+           bg-white
+           border-b border-slate-200
+           px-4 py-3
+           flex items-center
+           justify-center
+           gap-6"
+>
+
+    <a
+        href="/"
+        class="text-gray-600
+               hover:text-blue-600
+               font-medium"
+    >
+        Home
+    </a>
+
+
+    <a
+        href="/my-bookings"
+        class="text-gray-600
+               hover:text-blue-600
+               font-medium"
+    >
+        My Bookings
+    </a>
+
+
+    <a
+        href="/owner/dashboard"
+        class="text-blue-600
+               font-semibold"
+    >
+        Dashboard
+    </a>
+
+</div>
+
+
+
+<!-- ================================================= -->
+<!-- SIDEBAR OVERLAY -->
+<!-- ================================================= -->
+
+<div
+    id="ownerSidebarOverlay"
+    class="hidden
+           fixed inset-0
+           bg-black/40
+           z-[60]"
+></div>
+
+
+
+<!-- ================================================= -->
+<!-- OWNER SIDEBAR -->
+<!-- ================================================= -->
+
+<aside
+    id="ownerHamburgerSidebar"
+    class="fixed
+           top-0
+           left-0
+           h-full
+           w-72
+           bg-white
+           shadow-2xl
+           z-[70]
+           transform
+           -translate-x-full
+           transition-transform
+           duration-300
+           ease-in-out
+           flex
+           flex-col"
+>
+
+
+    <!-- ================================================= -->
+    <!-- SIDEBAR HEADER -->
+    <!-- ================================================= -->
+
+    <div
+        class="h-[65px]
+               px-5
+               border-b
+               border-slate-200
+               flex
+               items-center
+               justify-between
+               flex-shrink-0"
+    >
+
+        <div
+            class="flex items-center gap-3"
+        >
+
+            <img
+                src="/assets/logo.svg"
+                class="h-7"
+                alt="VehicalWala"
+            >
+
+            <span
+                class="font-bold text-gray-800"
+            >
+                Owner Panel
+            </span>
+
+        </div>
+
+
+        <!-- CLOSE BUTTON -->
+
+        <button
+            type="button"
+            id="ownerSidebarClose"
+            class="w-9 h-9
+                   flex items-center justify-center
+                   rounded-lg
+                   hover:bg-slate-100
+                   text-xl
+                   text-gray-600"
+        >
+            &times;
+        </button>
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- OWNER INFORMATION -->
+    <!-- ================================================= -->
+
+    <div
+        class="px-5 py-5
+               border-b
+               border-slate-200
+               bg-slate-50
+               flex-shrink-0"
+    >
+
+        <div
+            class="flex items-center gap-3"
+        >
+
+            <!-- AVATAR -->
+
+            <div
+                class="w-11 h-11
+                       rounded-full
+                       bg-blue-100
+                       flex
+                       items-center
+                       justify-center
+                       text-blue-700
+                       font-bold"
+            >
+                O
+            </div>
+
+
+            <!-- NAME -->
+
+            <div>
+
+                <p
+                    class="text-sm text-gray-500"
+                >
+                    Welcome
+                </p>
+
+
+                <p
+                    id="sidebarOwnerName"
+                    class="font-semibold text-gray-800"
+                >
+                    Owner
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- SIDEBAR MENU -->
+    <!-- ================================================= -->
+
+    <div
+        class="flex-1
+               overflow-y-auto
+               p-4"
+    >
+
+
+        <!-- ================================================= -->
+        <!-- NAVIGATION -->
+        <!-- ================================================= -->
+
+        <p
+            class="text-xs
+                   font-semibold
+                   uppercase
+                   tracking-wider
+                   text-gray-400
+                   px-3
+                   mb-2"
+        >
+            Navigation
+        </p>
+
+
+
+        <!-- ================================================= -->
+        <!-- HOME -->
+        <!-- ================================================= -->
+
+        <a
+            href="/"
+            class="owner-menu-link
+                   flex items-center gap-3
+                   px-4 py-3
+                   rounded-lg
+                   text-gray-700
+                   hover:bg-blue-50
+                   hover:text-blue-600
+                   transition"
+        >
+
+            <span
+                class="text-xl w-7 text-center"
+            >
+                🏠
+            </span>
+
+
+            <span
+                class="font-medium"
+            >
+                Home
+            </span>
+
+        </a>
+
+
+
+        <!-- ================================================= -->
+        <!-- MY BOOKINGS -->
+        <!-- ================================================= -->
+
+        <a
+            href="/my-bookings"
+            class="owner-menu-link
+                   flex items-center gap-3
+                   px-4 py-3
+                   rounded-lg
+                   text-gray-700
+                   hover:bg-blue-50
+                   hover:text-blue-600
+                   transition"
+        >
+
+            <span
+                class="text-xl w-7 text-center"
+            >
+                📋
+            </span>
+
+
+            <span
+                class="font-medium"
+            >
+                My Bookings
+            </span>
+
+        </a>
+
+
+
+        <!-- ================================================= -->
+        <!-- DASHBOARD -->
+        <!-- ================================================= -->
+
+        <a
+            href="/owner/dashboard"
+            class="owner-menu-link
+                   flex items-center gap-3
+                   px-4 py-3
+                   rounded-lg
+                   text-gray-700
+                   hover:bg-blue-50
+                   hover:text-blue-600
+                   transition"
+        >
+
+            <span
+                class="text-xl w-7 text-center"
+            >
+                📊
+            </span>
+
+
+            <span
+                class="font-medium"
+            >
+                Dashboard
+            </span>
+
+        </a>
+
+
+
+        <!-- DIVIDER -->
+
+        <div
+            class="my-3
+                   border-t
+                   border-slate-200"
+        ></div>
+
+
+
+        <!-- ================================================= -->
+        <!-- MANAGEMENT -->
+        <!-- ================================================= -->
+
+        <p
+            class="text-xs
+                   font-semibold
+                   uppercase
+                   tracking-wider
+                   text-gray-400
+                   px-3
+                   mb-2"
+        >
+            Management
+        </p>
+
+
+
+        <!-- ================================================= -->
+        <!-- ADD VEHICLE -->
+        <!-- ================================================= -->
+
+        <a
+            href="/owner/add-car"
+            class="owner-menu-link
+                   flex items-center gap-3
+                   px-4 py-3
+                   mb-1
+                   rounded-lg
+                   text-gray-700
+                   hover:bg-green-50
+                   hover:text-green-600
+                   transition"
+        >
+
+            <span
+                class="w-8 h-8
+                       rounded-lg
+                       bg-green-50
+                       flex
+                       items-center
+                       justify-center
+                       flex-shrink-0
+                       text-lg"
+            >
+                ➕
+            </span>
+
+
+            <span
+                class="font-medium"
+            >
+                Add Vehicle
+            </span>
+
+        </a>
+
+
+
+        <!-- ================================================= -->
+        <!-- MANAGE CARS -->
+        <!-- ================================================= -->
+
+        <a
+            href="/owner/manage-cars"
+            class="owner-menu-link
+                   flex items-center gap-3
+                   px-4 py-3
+                   mb-1
+                   rounded-lg
+                   text-gray-700
+                   hover:bg-blue-50
+                   hover:text-blue-600
+                   transition"
+        >
+
+            <span
+                class="w-8 h-8
+                       rounded-lg
+                       bg-blue-50
+                       flex
+                       items-center
+                       justify-center
+                       flex-shrink-0
+                       text-lg"
+            >
+                🚗
+            </span>
+
+
+            <span
+                class="font-medium"
+            >
+                Manage Cars
+            </span>
+
+        </a>
+
+
+
+        <!-- ================================================= -->
+        <!-- MANAGE BOOKINGS -->
+        <!-- ================================================= -->
+
+        <a
+            href="/owner/manage-bookings"
+            class="owner-menu-link
+                   flex items-center gap-3
+                   px-4 py-3
+                   mb-1
+                   rounded-lg
+                   text-gray-700
+                   hover:bg-orange-50
+                   hover:text-orange-600
+                   transition"
+        >
+
+            <span
+                class="w-8 h-8
+                       rounded-lg
+                       bg-orange-50
+                       flex
+                       items-center
+                       justify-center
+                       flex-shrink-0
+                       text-lg"
+            >
+                📋
+            </span>
+
+
+            <span
+                class="font-medium"
+            >
+                Manage Bookings
+            </span>
+
+        </a>
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- LOGOUT -->
+    <!-- ================================================= -->
+
+    <div
+        class="p-4
+               border-t
+               border-slate-200
+               flex-shrink-0"
+    >
+
+        <button
+            type="button"
+            id="sidebarLogout"
+            class="w-full
+                   flex
+                   items-center
+                   justify-center
+                   gap-2
+                   px-4
+                   py-3
+                   rounded-lg
+                   bg-red-50
+                   text-red-600
+                   hover:bg-red-100
+                   transition
+                   font-medium"
+        >
+
+            <span>
+                ↪
+            </span>
+
+            Logout
+
+        </button>
+
+    </div>
+
+</aside>
+
+
+
+<!-- ================================================= -->
+<!-- SIDEBAR JAVASCRIPT -->
+<!-- ================================================= -->
+
+<script>
+
+(function () {
+
+    // =================================================
+    // ELEMENTS
+    // =================================================
+
+    const menuBtn =
+        document.getElementById(
+            "ownerMenuBtn"
+        );
+
+
+    const sidebar =
+        document.getElementById(
+            "ownerHamburgerSidebar"
+        );
+
+
+    const overlay =
+        document.getElementById(
+            "ownerSidebarOverlay"
+        );
+
+
+    const closeBtn =
+        document.getElementById(
+            "ownerSidebarClose"
+        );
+
+
+
+    // =================================================
+    // OPEN SIDEBAR
+    // =================================================
+
+    function openSidebar() {
+
+        if (
+            !sidebar ||
+            !overlay
+        ) {
+            return;
+        }
+
+
+        sidebar.classList.remove(
+            "-translate-x-full"
+        );
+
+
+        overlay.classList.remove(
+            "hidden"
+        );
+
+
+        document.body.classList.add(
+            "overflow-hidden"
+        );
+
+    }
+
+
+
+    // =================================================
+    // CLOSE SIDEBAR
+    // =================================================
+
+    function closeSidebar() {
+
+        if (
+            !sidebar ||
+            !overlay
+        ) {
+            return;
+        }
+
+
+        sidebar.classList.add(
+            "-translate-x-full"
+        );
+
+
+        overlay.classList.add(
+            "hidden"
+        );
+
+
+        document.body.classList.remove(
+            "overflow-hidden"
+        );
+
+    }
+
+
+
+    // =================================================
+    // HAMBURGER
+    // =================================================
+
+    if (menuBtn) {
+
+        menuBtn.addEventListener(
+            "click",
+            openSidebar
+        );
+
+    }
+
+
+
+    // =================================================
+    // CLOSE BUTTON
+    // =================================================
+
+    if (closeBtn) {
+
+        closeBtn.addEventListener(
+            "click",
+            closeSidebar
+        );
+
+    }
+
+
+
+    // =================================================
+    // OVERLAY
+    // =================================================
+
+    if (overlay) {
+
+        overlay.addEventListener(
+            "click",
+            closeSidebar
+        );
+
+    }
+
+
+
+    // =================================================
+    // MENU LINKS
+    // =================================================
+
+    document
+        .querySelectorAll(
+            ".owner-menu-link"
+        )
+        .forEach(
+            function (link) {
+
+                link.addEventListener(
+                    "click",
+                    closeSidebar
+                );
+
+            }
+        );
+
+
+
+    // =================================================
+    // ESC KEY
+    // =================================================
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                closeSidebar();
+
+            }
+
+        }
+    );
+
+
+
+    // =================================================
+    // OWNER NAME SYNC
+    // =================================================
+
+    const ownerName =
+        document.getElementById(
+            "ownerName"
+        );
+
+
+    const sidebarOwnerName =
+        document.getElementById(
+            "sidebarOwnerName"
+        );
+
+
+    if (
+        ownerName &&
+        sidebarOwnerName
+    ) {
+
+        sidebarOwnerName.textContent =
+            ownerName.textContent ||
+            "Owner";
+
+
+        const observer =
+            new MutationObserver(
+                function () {
+
+                    sidebarOwnerName.textContent =
+                        ownerName.textContent ||
+                        "Owner";
+
+                }
+            );
+
+
+        observer.observe(
+            ownerName,
+            {
+                childList: true,
+                characterData: true,
+                subtree: true
+            }
+        );
+
+    }
+
+
+
+    // =================================================
+    // LOGOUT FUNCTION
+    // =================================================
+
+    function logoutOwner() {
+
+        localStorage.removeItem(
+            "token"
+        );
+
+
+        localStorage.removeItem(
+            "user"
+        );
+
+
+        localStorage.removeItem(
+            "authToken"
+        );
+
+
+        localStorage.removeItem(
+            "accessToken"
+        );
+
+
+        closeSidebar();
+
+
+        window.location.replace(
+            "/"
+        );
+
+    }
+
+
+
+    // =================================================
+    // TOP LOGOUT
+    // =================================================
+
+    const ownerLogout =
+        document.getElementById(
+            "ownerLogout"
+        );
+
+
+    if (ownerLogout) {
+
+        ownerLogout.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+                logoutOwner();
+
+            }
+        );
+
+    }
+
+
+
+    // =================================================
+    // SIDEBAR LOGOUT
+    // =================================================
+
+    const sidebarLogout =
+        document.getElementById(
+            "sidebarLogout"
+        );
+
+
+    if (sidebarLogout) {
+
+        sidebarLogout.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+                logoutOwner();
+
+            }
+        );
+
+    }
+
+})();
+
+</script>
